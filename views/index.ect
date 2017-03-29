@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" media="screen, projection" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<script type="text/javascript" src="/js/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<html>
+  <head>
+    <title>yu-gi-oh-vannila server</title>
+  </head>
+  <body>
+    <h3>yu-gi-oh-vannila server</h3>
+    <img src="/img/vanilla.png" alt="vanilla" id="vanillaImage">
+    <div id="forms">
+    <input type="radio" name="radio" value="0" checked onClick="elementEnable(false, 'keyword')">通常モンスター
+    <input type="radio" name="radio" value="1" onClick="elementEnable(true, 'keyword')">キーワード
+    <input type="text" name="keyword" id="keyword" size="30" maxlength="30" value="" disabled="true" placeholder="通常魔法、攻1000など">
+    <div>
+      <button type="button" name="normal" value="normal" id="normal" onClick="getMonsterInfo()">
+        ランダム表示
+      </button>
+    </div>
+    <h4 id="name"></h4>
+    <div id="text"></div>
+  </body>
+</html>

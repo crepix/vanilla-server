@@ -1,0 +1,8 @@
+{
+  "cron" : "0 0 12 * * *",
+  "postTarget": "slack",
+  "slack": {
+    "token": "FIX ME",
+    "cronChannelIds": []
+  }
+}

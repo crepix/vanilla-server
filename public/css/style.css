@@ -1,0 +1,20 @@
+body {
+  background-color: #FFDDBB;
+  padding: 20px;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#vanillaImage {
+  float: left;
+}
+
+#forms {
+  padding: 10px;
+  float: left;
+  width: 500px;
+  background-color: #FFFFFF;
+  border: 1px solid #333333;
+}
