@@ -12,14 +12,15 @@ export class CronController {
     this.cronJob = new cron.CronJob({
       cronTime: cronTime,
       onTick: () => {
-        getVanilla(option).then((info) => {
-          console.log(info.name);
-          console.log(info.text);
-          console.log("");
-          if (option === SLACK) {
-            SlackBotProvider.get().sendMessageToAllCronChannel("*《" + info.name + "》*\n```\n" + info.text + "\n```");
-          }
-        });
+        if (option === SLACK) {
+          SlackBotProvider.get().sendMessageToAllCronChannel();
+        } else {
+          getVanilla(option).then((info) => {
+            console.log(info.name);
+            console.log(info.text);
+            console.log("");
+          });
+        }
       },
       onComplete: () => {
         console.log("onComplite!");
