@@ -8,7 +8,7 @@ const Iconv = require("iconv").Iconv;
 /**
  * ランダムでバニラモンスターのモンスター情報を持ってきます。本体
  */
-export = function getVanillaInformation(option?: number, tag?: string): Promise<{name: string, text: string}> {
+export = function getVanillaInformation(option?: number, tag?: string): Promise<{name: string, text: string, url: string}> {
   let rand = Math.floor(Math.random() * 65535) ;
   return selectUrl(rand, tag).then((url) => {
     return getNameAndText(url, option);
@@ -45,7 +45,7 @@ function selectUrl(num: number, tag?: string): Promise<string> {
 /**
  * URLからカードの名前とカードの情報を引っ張ってきます。返り値はPromise
  */
-function getNameAndText(url: string, option?: number): Promise<{name: string, text: string}> {
+function getNameAndText(url: string, option?: number): Promise<{name: string, text: string, url: string}> {
   return request(url, {encoding: null}).then((html) => {
     let detectResult = jschardet.detect(html);
     let iconv = new Iconv(detectResult.encoding, "UTF-8//TRANSLIT//IGNORE");
@@ -68,8 +68,8 @@ function getNameAndText(url: string, option?: number): Promise<{name: string, te
         text = text.slice(0, cutNum * -1);
       }
     }
-    return {name: name, text: text};
+    return {name: name, text: text, url: url};
   }).catch((err) => {
-    return {name: "失敗", text: "エラーか該当するカードが見つかりませんでした……"}
+    return {name: "失敗", text: "エラーか該当するカードが見つかりませんでした……", url: ""}
   });
 }
